@@ -1,6 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 //bootstrap
 
-@import '../node_modules/bootstrap/scss/bootstrap.scss'; 
+ @import '../node_modules/bootstrap/scss/bootstrap.scss'; 
 @import '../node_modules/bootstrap/scss/bootstrap-grid.scss'; 
 @import '../node_modules/bootstrap/scss/bootstrap-reboot.scss'; 
+
+//这是PrimeNG自己的皮肤样式
+@import "/assets/css/primeng-themes-my/primeng.min.css";
+@import "/assets/css/primeng-themes-my/themes/bootstrap-my/theme.css";
+
+//这是应用的整体布局样式，放在最底部引入，用来覆盖以上样式里面不好看的部分选择器
+@import "/assets/css/nicefish/layout-default.scss";

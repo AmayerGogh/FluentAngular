@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule, Http} from '@angular/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +18,7 @@ import { appRoutes } from './app.routes';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     HttpModule,

@@ -1,6 +1,6 @@
 <ul class="layout-menu">
-     <!-- <li *ngFor="let menu of menus2">   -->
-       <!-- <a href="javascript:void(0);" (click)="toggleMenuItem($event,menu)">
+     <li *ngFor="let menu of menus">
+        <a href="javascript:void(0);" (click)="toggleMenuItem($event,menu)">
             <i class="fa fa-fw {{menu.icon?menu.icon:'fa-bars'}}"></i>
             <span>{{menu.name}}</span>
             <i class="fa fa-fw fa-angle-down"></i>
@@ -17,7 +17,6 @@
                     <div class="layout-menu-tooltip-text">{{child.name}}</div>
                 </div>
             </li>
-        </ul>   -->
-     <!-- </li>   -->
-  
+        </ul>
+    </li> 
 </ul>

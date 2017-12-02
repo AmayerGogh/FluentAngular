@@ -2,40 +2,60 @@ import { Component, OnInit, ElementRef, HostListener, Input } from '@angular/cor
 import { EventBusService } from '../../common/services/event-bus.service';
 import { CommonModule } from '@angular/common';
 import { Menu,MenuDetail } from '../../models/menu';
-
+import { NgForOf } from '@angular/common';
 @Component({
     selector: 'app-side-menu',
     templateUrl: './app-side-menu.component.html',
     styleUrls: ['./app-side-menu.component.scss']
 })
 export class AppSideMenuComponent implements OnInit {
-
-
-    public menus:Menu[]=[
+    public menus = [
         {
-            id: 1,
-            name: "权限管理",
+            id: "1",
+            name: "首页",
+            isOpen: false,
+            icon:'fa-home',         
+        },
+        {
+            id: "2",
+            name: "Styles",
             isOpen: false,
             icon:'fa-home',
             children: [
-                { name: "组织架构",icon:'fa-male',route:'org/orgmng'},
-                { name: "用户管理",icon:'fa-bug',route:'user/usertable/page/1' },
-                { name: "角色管理",icon:'fa-bus',route:'role/roletable/page/1' },
-                { name: "权限管理",icon:'fa-send',route:'permission/permissiontable/page/1' }
+                { name: "Colors",icon:'fa-male',route:'org/orgmng'},
+                { name: "Icons",icon:'fa-bug',route:'user/usertable/page/1' },
+                { name: "Animation",icon:'fa-bus',route:'role/roletable/page/1' },
+                { name: "Acrylic",icon:'fa-send',route:'permission/permissiontable/page/1' },
+                { name: "Typography",icon:'fa-send',route:'permission/permissiontable/page/1' },
+                { name: "Fonts",icon:'fa-send',route:'permission/permissiontable/page/1' },
+                { name: "Styling Components",icon:'fa-send',route:'permission/permissiontable/page/1' },
+                { name: "Custom Theme",icon:'fa-send',route:'permission/permissiontable/page/1' },
             ]
         },
         {
-            id: 2,
-            name: "内容管理",
+            id: "3",
+            name: "Components",
             isOpen: false,
             icon:'fa-magic',
             children: [
-                { name: "文章管理",icon:'fa-mobile',route:'post/posttable/page/1' },
-                { name: "评论管理",icon:'fa-minus',route:'comment/commenttable/page/1' }
+                { name: "Animate",icon:'fa-mobile',route:'post/posttable/page/1' },
+                { name: "AppBarButton",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "AutoSuggestBox",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "Button",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "CheckBox",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "ColorPicker",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "CommandBar",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "ContentDialog",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "DatePickers",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "DropDownMenu",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "FlipView",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "Flyout",icon:'fa-minus',route:'comment/commenttable/page/1' },
+                { name: "Button",icon:'fa-minus',route:'comment/commenttable/page/1' },
+
             ]
         },
         {
-            id: 3,
+            id: "4",
             name: "系统监控",
             isOpen: false,
             icon:'fa-wrench',
@@ -44,13 +64,7 @@ export class AppSideMenuComponent implements OnInit {
                 { name: "高德地图",icon:'fa-map-marker',route:'map/map' }
             ]
         }
-    ]
-
-
-
-
-
-  
+    ];
 
     public isCollapse: boolean = false;
 
@@ -61,7 +75,6 @@ export class AppSideMenuComponent implements OnInit {
         this.eventBusService.topToggleBtn.subscribe(value => {
             this.toggleMenuAll(value);
         });
-      
     }
 
     private toggleMenuAll(isCollapse: boolean): void {
@@ -72,7 +85,7 @@ export class AppSideMenuComponent implements OnInit {
     }
 
     public toggleMenuItem(event, menu): void {
-        menu.isOpen = !menu.isOpen; 
+        menu.isOpen = !menu.isOpen;
         //折叠状态下只能打开一个二级菜单层
         if (this.isCollapse) {
             let tempId = menu.id;
